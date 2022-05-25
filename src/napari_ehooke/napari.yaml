@@ -10,6 +10,9 @@ contributions:
     - id: napari-ehooke.segment_cells
       title: Segment Single Cells
       python_name: napari_ehooke.ehooke:segment_single_cells
+    - id: napari-ehooke.compute_cells
+      title: Compute Cells
+      python_name: napari_ehooke.ehooke:compute_cells
   widgets:
     - command: napari-ehooke.compute_mask
       display_name: Compute Mask
@@ -19,4 +22,7 @@ contributions:
       autogenerate: false
     - command: napari-ehooke.segment_cells
       display_name: Segment Single Cells
+      autogenerate: false
+    - command: napari-ehooke.compute_cells
+      display_name: Compute Cells
       autogenerate: false

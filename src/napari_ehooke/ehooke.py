@@ -1,5 +1,6 @@
 from . import image_manager
 from . import segmentation_manager
+from . import cell_manager
 from magicgui import magic_factory
 from napari.types import ImageData, LabelsData
 
@@ -25,6 +26,11 @@ def align_img(img: ImageData, mask: LabelsData) -> ImageData:
 
 @magic_factory(call_button="Segment")
 def segment_single_cells(mask: LabelsData) -> LabelsData:
-    labels = segmentation_manager.segment_single_cells(mask)
-    return labels
+    return segmentation_manager.segment_single_cells(mask)
+
+@magic_factory(call_button="Compute Cells")
+def compute_cells(fluor_img: ImageData, mask:LabelsData, labels:LabelsData, pixel_size:int, axial_step:int, find_septum:bool, membrane_thickness:int):
+    cellmanager = cell_manager.CellManager()
+    cellmanager.compute_cells(fluor_img, mask, labels, pixel_size, axial_step)
+    cellmanager.process_cells(fluor_img, mask, find_septum, membrane_thickness)
 
